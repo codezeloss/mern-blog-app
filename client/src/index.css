@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply text-[#222] text-base;
+  }
+
+  header a {
+    @apply no-underline	text-inherit;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  h2 {
+    @apply font-semibold text-xl;
+  }
+
+  form {
+    @apply flex flex-col max-w-[400px] my-0 mx-auto;
+  }
+
+  form input {
+    @apply block w-full py-2 px-4 border-2 border-[#ddd] rounded-md mb-3;
+  }
+
+  form button {
+    @apply w-full block bg-[#555] border-0 text-white rounded-md py-2 font-bold;
+  }
+
+  form h1 {
+    @apply font-bold text-4xl text-center mb-10;
+  }
+}
