@@ -8,15 +8,21 @@ const Register = () => {
   const register = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:4000/register", {
+    const response = await fetch("http://localhost:4000/api/v1/register", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },
     });
+
+    if (!response.ok) {
+      alert("Registration failed!");
+    } else {
+      alert("Registration successful");
+    }
   };
 
   return (
-    <form onSubmit={register}>
+    <form className="auth" onSubmit={register}>
       <h1>Register</h1>
       <input
         type="text"

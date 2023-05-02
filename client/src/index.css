@@ -23,7 +23,7 @@
     @apply font-semibold text-xl;
   }
 
-  form {
+  form.auth {
     @apply flex flex-col max-w-[400px] my-0 mx-auto;
   }
 
@@ -35,7 +35,16 @@
     @apply w-full block bg-[#555] border-0 text-white rounded-md py-2 font-bold;
   }
 
-  form h1 {
+  form.auth h1 {
     @apply font-bold text-4xl text-center mb-10;
+  }
+
+  /* Post Page */
+  .post-page a {
+    @apply text-[#333] underline;
+  }
+
+  .post-page h1 {
+    @apply font-bold text-4xl mt-4 mb-1;
   }
 }
