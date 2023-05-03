@@ -11,7 +11,7 @@ const Login = () => {
   const { setUserInfo } = useContext(UserContext);
 
   // LOGIN FUNCTION
-  const login = async (e) => {
+  async function login(e) {
     e.preventDefault();
 
     const response = await fetch("http://localhost:4000/api/v1/login", {
@@ -28,7 +28,7 @@ const Login = () => {
     } else {
       alert("Login failed!");
     }
-  };
+  }
 
   // Redirect the user
   if (redirect) {

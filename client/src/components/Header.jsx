@@ -22,7 +22,6 @@ const Header = () => {
       const response = await fetch("http://localhost:4000/api/v1/profile", {
         credentials: "include",
       });
-
       const data = await response.json();
       setUserInfo(data);
     }

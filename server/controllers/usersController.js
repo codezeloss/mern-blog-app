@@ -26,8 +26,10 @@ const login = async (req, res) => {
 
   const user = await User.findOne({ username });
 
+  // BCRYPT
   const comparedPassword = bcrypt.compareSync(password, user.password);
 
+  // JWT
   if (comparedPassword) {
     await jwt.sign(
       { username, id: user._id },
@@ -51,6 +53,7 @@ const login = async (req, res) => {
 const getProfile = async (req, res) => {
   const { token } = req.cookies;
 
+  // JWT
   jwt.verify(token, process.env.SECRET_KEY, {}, (err, info) => {
     if (err) throw err;
     res.json(info);

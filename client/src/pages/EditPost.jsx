@@ -12,13 +12,13 @@ const EditPost = () => {
   const [content, setContent] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  //
+  // Get default post data
   useEffect(() => {
     async function fetchPostData() {
       const response = await fetch(`http://localhost:4000/api/v1/post/${id}`);
       const postInfos = await response.json();
 
-      // default values
+      // Set default values
       setTitle(postInfos.title);
       setContent(postInfos.content);
       setSummary(postInfos.summary);
@@ -27,7 +27,7 @@ const EditPost = () => {
     fetchPostData();
   }, [id]);
 
-  //
+  // Update the post
   async function updatePost(e) {
     e.preventDefault();
 

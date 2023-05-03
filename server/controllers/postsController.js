@@ -6,11 +6,13 @@ const jwt = require("jsonwebtoken");
 // POST
 const createNewPost = async (req, res) => {
   const { originalname, path } = req.file;
+
   const parts = originalname.split(".");
   const ext = parts[parts.length - 1];
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
 
+  // JWT
   const { token } = req.cookies;
   jwt.verify(token, process.env.SECRET_KEY, {}, async (err, info) => {
     if (err) throw err;
@@ -44,6 +46,7 @@ const getAllPosts = async (req, res) => {
 // GET
 const getPost = async (req, res) => {
   const { id } = req.params;
+
   const post = await Post.findById(id).populate("author", ["username"]);
   res.json(post);
 };
@@ -55,12 +58,14 @@ const updatePost = async (req, res) => {
 
   if (req.file) {
     const { originalname, path } = req.file;
+
     const parts = originalname.split(".");
     const ext = parts[parts.length - 1];
     newPath = path + "." + ext;
     fs.renameSync(path, newPath);
   }
 
+  // JWT
   const { token } = req.cookies;
   jwt.verify(token, process.env.SECRET_KEY, {}, async (err, info) => {
     if (err) throw err;
